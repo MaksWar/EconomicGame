@@ -27,13 +27,13 @@ namespace EconimicGame.UI
 
         private void SetEnergy(int consumedEnergy, int producedEnergy)
         {
-            _energy.text = "Energy : " + Mathf.Clamp(consumedEnergy, 0, Int32.MaxValue).ToString() + " / " +
+            _energy.text = Mathf.Clamp(consumedEnergy, 0, Int32.MaxValue).ToString() + " / " +
                            Mathf.Clamp(producedEnergy, 0, Int32.MaxValue).ToString();
         }
 
         private void SetGold(int currentGold)
         {
-            _gold.text = "Gold : " + Mathf.Clamp(currentGold, 0, Int32.MaxValue).ToString();
+            _gold.text = Mathf.Clamp(currentGold, 0, Int32.MaxValue).ToString();
         }
     }
 }

@@ -32,8 +32,8 @@ namespace EconimicGame.BuildingSystem
             {
                 for (int y = 0; y < _size.y; y++)
                 {
-                    if ((x + y) % 2 == 0) Gizmos.color = new Color(0.88f, 0f, 1f, 0.3f);
-                    else Gizmos.color = new Color(1f, 0.68f, 0f, 0.3f);
+                    if ((x + y) % 2 == 0) Gizmos.color = new Color(0.88f, 0f, 1f, 0.5f);
+                    else Gizmos.color = new Color(1f, 0.68f, 0f, 0.5f);
 
                     Gizmos.DrawCube(transform.position + new Vector3(x, 0, y), new Vector3(1, .1f, 1));
                 }

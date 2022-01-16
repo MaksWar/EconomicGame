@@ -41,7 +41,7 @@ namespace EconimicGame.Resources
         /// <param name="countOfResource"></param>
         public virtual void DelResource(int countOfResource)
         {
-            consumedCount -= countOfResource;
+            currentCount -= countOfResource;
         }
 
         /// <summary>

@@ -1,17 +1,28 @@
 ﻿using System;
 using UnityEngine;
+using EconimicGame.BuildingSystem;
 
 namespace EconimicGame.Resources
 {
     public class ResourceController : MonoBehaviour
     {
         public static ResourceController Instance;
-        
+
         [SerializeField] private int _startGold;
         [SerializeField] private int _startEnergy;
-        
+
         private ResourceEnergy _resourceEnergy = new ResourceEnergy();
         private ResourceGold _resourceGold = new ResourceGold();
+
+        private void OnEnable()
+        {
+            BuildingsGrid.OnChangeResource += DelResource;
+        }
+
+        private void OnDisable()
+        {
+            BuildingsGrid.OnChangeResource -= DelResource;
+        }
 
         private void Awake()
         {
@@ -19,7 +30,10 @@ namespace EconimicGame.Resources
             {
                 Instance = this;
             }
+        }
 
+        private void Start()
+        {
             _resourceEnergy.SetStartValue(_startEnergy);
             _resourceGold.SetStartValue(_startGold);
         }
@@ -35,8 +49,8 @@ namespace EconimicGame.Resources
                     _resourceGold.AddResource(value);
                     break;
             }
-        }        
-        
+        }
+
         public void AddConsumedResource(ResourceType resourceType, int value)
         {
             switch (resourceType)
@@ -48,8 +62,8 @@ namespace EconimicGame.Resources
                     _resourceGold.AddConsumedResource(value);
                     break;
             }
-        }      
-        
+        }
+
         public void DelResource(ResourceType resourceType, int value)
         {
             switch (resourceType)
@@ -61,8 +75,8 @@ namespace EconimicGame.Resources
                     _resourceGold.DelResource(value);
                     break;
             }
-        }        
-        
+        }
+
         public void DelConsumedResource(ResourceType resourceType, int value)
         {
             switch (resourceType)
@@ -76,9 +90,14 @@ namespace EconimicGame.Resources
             }
         }
 
-        public bool CheckEnergyForProduce(int consumeEnergy)
+        public bool CheckEnergyForProduce()
         {
-            return true;
+            return _resourceEnergy.ConsumedEnergy <= _resourceEnergy.CurrentCount;
+        }
+
+        public bool CheckGoldToBuildABuilding(int costBuilding)
+        {
+            return _resourceGold.CurrentCount >= costBuilding;
         }
     }
 }

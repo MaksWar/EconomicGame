@@ -37,7 +37,14 @@ namespace EconimicGame.Building
             {
                 yield return new WaitForSeconds(_timeForProduceGold);
 
-                ResourceController.Instance.AddResource(ResourceType.Gold, _countOfProduceGold);
+                if (ResourceController.Instance.CheckEnergyForProduce() == true || _countOfConsumeEnergy == 0)
+                {
+                    ResourceController.Instance.AddResource(ResourceType.Gold, _countOfProduceGold);
+                }
+                else
+                {
+                    Debug.Log("Have no enough energy");
+                }
             }
         }
     }
