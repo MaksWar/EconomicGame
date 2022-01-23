@@ -5,7 +5,7 @@ namespace EconimicGame.Resources
     public abstract class ResourceBase : MonoBehaviour
     {
         public int CurrentCount => currentCount;
-        public int ConsumedEnergy => consumedCount;
+        public int ConsumedResource => consumedCount;
 
         /// <summary>
         /// Текущее колличество потребляемого ресурса

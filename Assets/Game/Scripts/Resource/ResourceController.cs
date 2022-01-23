@@ -92,7 +92,7 @@ namespace EconimicGame.Resources
 
         public bool CheckEnergyForProduce()
         {
-            return _resourceEnergy.ConsumedEnergy <= _resourceEnergy.CurrentCount;
+            return _resourceEnergy.ConsumedResource <= _resourceEnergy.CurrentCount;
         }
 
         public bool CheckGoldToBuildABuilding(int costBuilding)

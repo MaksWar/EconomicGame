@@ -17,7 +17,7 @@ namespace EconimicGame.Building
         public override void StartProduce()
         {
             ResourceController.Instance.AddConsumedResource(ResourceType.Energy, _countOfConsumeEnergy);
-            
+
             StartCoroutine(Produce());
         }
 
@@ -28,7 +28,6 @@ namespace EconimicGame.Building
 
         public override void DestroyBuilding()
         {
-            
         }
 
         private IEnumerator Produce()
